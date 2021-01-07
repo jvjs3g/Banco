@@ -6,9 +6,17 @@ import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 
 interface Request{
-  name:string;
-  email:string;
-  password:string;
+  name: string;
+  email: string;
+  password: string;
+  cpf: string;
+  rg: string;
+  nascimento: string;
+  nomeDaMae: string;
+  cep: string;
+  numero: string;
+  complemento: string;
+  rua: string;
 }
 
 @injectable()
@@ -25,12 +33,24 @@ class CreateUserService{
     ){
 
   }
-  public async execute({ name, email, password }:Request):Promise<User>{
+  public async execute({ name, email, password, cpf, rg, nascimento, nomeDaMae, cep, rua, complemento, numero }:Request):Promise<User>{
 
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if(checkUserExists){
       throw new AppError('Email address already used.');
+    }
+
+    const checkCpfExists = await this.usersRepository.findByCpf(cpf);
+
+    if(checkCpfExists){
+      throw new AppError('CPF already exists');
+    }
+
+    const checkRgExists = await this.usersRepository.findByRg(rg);
+
+    if(checkRgExists){
+      throw new AppError('RG already exists');
     }
 
     const hashedPassword = await this.hashProvider.generateHash(password);
@@ -39,11 +59,19 @@ class CreateUserService{
       name,
       email,
       password:hashedPassword,
+      cpf,
+      rg,
+      nascimento,
+      nomeDaMae,
+      cep,
+      complemento,
+      numero,
+      rua
     });
 
     await this.cacheProvider.invalidatePrefix('providers-list');
     return user;
   }
-}
+}//
 
 export default CreateUserService;

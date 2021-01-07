@@ -9,11 +9,19 @@ export default class UsersController {
 
       const createUser = container.resolve(CreateUserService);
 
-      const { name, email, password }  = request.body;
+      const { name, email, password , cpf, rg, nascimento, nomeDaMae, cep , numero, complemento, rua }  = request.body;
       const user = await createUser.execute({
         name,
         email,
-        password
+        password,
+        cpf,
+        rg,
+        nascimento,
+        nomeDaMae,
+        cep,
+        numero,
+        complemento,
+        rua
       });
 
       return response.json(classToClass(user));

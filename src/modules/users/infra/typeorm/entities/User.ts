@@ -19,6 +19,29 @@ class User {
   @Exclude()
   password:string;
 
+  @Column()
+  cpf: string;
+
+  @Column()
+  rg: string;
+
+  @Column('timestamp with time zone')
+  nascimento: Date;
+
+  @Column()
+  nomeDaMae: string;
+
+  @Column()
+  cep: string;
+
+  @Column()
+  numero: string;
+
+  @Column()
+  complemento: string;
+
+  @Column()
+  rua: string;
 
   @Column()
   avatar:string;

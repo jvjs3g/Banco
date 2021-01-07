@@ -21,6 +21,22 @@ class UserRepository implements IUserRepository {
     return user;
   }
 
+  public async findByCpf(cpf:string):Promise<User | undefined> {
+    const user = await this.ormRepository.findOne({
+      where: { cpf }
+    });
+
+    return user;
+  }
+
+  public async findByRg(rg: string):Promise<User | undefined> {
+    const user = await this.ormRepository.findOne({
+      where: { rg }
+    });
+
+    return user;
+  }
+
   public async findByEmail(email: string): Promise<User | undefined>{
     const user = await this.ormRepository.findOne({
       where: { email}
@@ -45,11 +61,19 @@ class UserRepository implements IUserRepository {
     return users;
   }
 
-  public async create({name,email,password }: ICreateUserDTO): Promise<User>{
+  public async create({name,email,password, cpf, rg, nascimento , nomeDaMae, cep, numero, complemento, rua }: ICreateUserDTO): Promise<User>{
     const appointment = this.ormRepository.create({
       name,
       email,
-      password
+      password,
+      cpf,
+      rg,
+      nascimento,
+      nomeDaMae,
+      cep,
+      numero,
+      complemento,
+      rua
     });
 
     await this.ormRepository.save(appointment);

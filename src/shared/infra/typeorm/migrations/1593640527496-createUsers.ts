@@ -28,6 +28,41 @@ export default  class createUsers1593640527496 implements MigrationInterface {
             type:'varchar',
           },
           {
+            name:'cpf',
+            type:'varchar',
+            isUnique: true,
+          },
+          {
+            name:'rg',
+            type:'varchar',
+            isUnique: true
+          },
+          {
+            name:'nascimento',
+            type:'timestamp with time zone',
+          },
+          {
+            name: 'nomeDaMae',
+            type: 'varchar',
+          },
+          {
+            name: 'cep',
+            type: 'varchar',
+          },
+          {
+            name: 'numero',
+            type: 'varchar',
+          },
+          {
+            name: 'complemento',
+            type: 'varchar',
+          },
+          {
+            name: 'rua',
+            type: 'varchar',
+          },
+
+          {
             name:'created_at',
             type:'timestamp',
             default:'now()'

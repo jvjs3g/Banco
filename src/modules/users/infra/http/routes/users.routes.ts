@@ -23,6 +23,14 @@ usersRouter.post('/',celebrate({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
+    cpf: Joi.string().required().min(11).max(11),
+    rg: Joi.string().required(),
+    nascimento: Joi.date().required(),
+    nomeDaMae: Joi.string().required(),
+    cep: Joi.string().required().min(8).max(8),
+    numero: Joi.string().required(),
+    complemento: Joi.string(),
+    rua: Joi.string().required()
   }
 }), userController.create);
 

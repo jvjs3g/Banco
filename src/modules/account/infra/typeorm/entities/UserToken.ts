@@ -2,25 +2,22 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  Generated,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
 
-import User from '@modules/users/infra/typeorm/entities/User';
-
-@Entity('appointments')
-class Appointment {
+@Entity('user_tokens')
+class UserToken {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  cpf: string;
+  @Generated('uuid')
+  token: string;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'cpf' })
-  user: User;
+  @Column()
+  user_id: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -29,4 +26,4 @@ class Appointment {
   updated_at: Date;
 }
 
-export default Appointment;
+export default UserToken

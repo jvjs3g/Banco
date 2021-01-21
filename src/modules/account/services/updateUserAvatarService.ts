@@ -5,7 +5,7 @@ import AppError from '@shared/errors/AppError';
 import uploadConfig from '@config/upload';
 import User from '../infra/typeorm/entities/User';
 
-import IUserRepository from '../repositories/IUsersRepository';
+import IUserRepository from '../repositories/IAccountRepository';
 
 interface Request{
   avatar_id:string;

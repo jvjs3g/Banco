@@ -1,6 +1,6 @@
 import { injectable, inject } from'tsyringe';
 import { isAfter, addHours } from 'date-fns';
-import IUserRepository from '../repositories/IUsersRepository';
+import IUserRepository from '../repositories/IAccountRepository';
 import IUserTokensRepository from '../repositories/IUserTokenReposory';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 import AppError from '@shared/errors/AppError';

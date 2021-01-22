@@ -1,5 +1,5 @@
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
-import CreateUserServices from './CreateUserService';
+import CreateUserServices from './CreateAccountService';
 import FakehashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 

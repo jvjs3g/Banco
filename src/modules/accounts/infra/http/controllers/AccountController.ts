@@ -12,6 +12,8 @@ export default class AccountController {
       const { cpf }  = request.body;
       const acccount = await createAccount.execute({
         cpf,
+        agencia:'123',
+        conta:'321'
       });
 
       return response.json(classToClass(acccount));

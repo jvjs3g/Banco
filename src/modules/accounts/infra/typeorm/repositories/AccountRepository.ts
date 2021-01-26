@@ -29,9 +29,11 @@ class AccountRepository implements IAccountRepository {
   }
 
 
-  public async create({ cpf }: ICreateAccountDTO): Promise<Account>{
+  public async create({ cpf, agencia, conta }: ICreateAccountDTO): Promise<Account>{
     const appointment = this.ormRepository.create({
       cpf,
+      agencia,
+      conta
     });
 
     await this.ormRepository.save(appointment);

@@ -5,6 +5,8 @@ import IUserRepository from '../repositories/IAccountsRepository';
 
 interface Request{
   cpf: string;
+  agencia: string;
+  conta:string;
 }
 
 @injectable()
@@ -15,7 +17,7 @@ class CreateAccountService{
     ){
 
   }
-  public async execute({ cpf }:Request):Promise<Account>{
+  public async execute({ cpf , conta,  agencia}:Request):Promise<Account>{
 
 
     const checkCpfExists = await this.accountsRepository.findByCpf(cpf);
@@ -28,6 +30,8 @@ class CreateAccountService{
 
     const account = await this.accountsRepository.create({
       cpf,
+      agencia,
+      conta
     });
 
     return account;

@@ -3,20 +3,20 @@ import { Router,
 import { celebrate, Segments, Joi } from 'celebrate';
 
 
-import AccountsController from '../controllers/AccountsController';
 
-const usersRouter = Router();
+import AccountsController from '../controllers/AccountController';
 
+const accountsRouter = Router();
 
 const accountController = new AccountsController();
 
-usersRouter.post('/',celebrate({
+accountsRouter.post('/',celebrate({
   [Segments.BODY]:{
     cpf: Joi.string().required().min(11).max(11),
   }
 }), accountController.create);
 
-export default usersRouter;
+export default accountsRouter;
 
 
 // apartir do momento que tenho regra de negocio na rota preciso criar um service

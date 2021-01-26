@@ -1,6 +1,7 @@
 import {MigrationInterface, QueryRunner, TableColumn, TableForeignKey} from "typeorm";
 
-export default class addCpfAccount1610062742815 implements MigrationInterface {
+export default class AddCpfAccount1611622972029 implements MigrationInterface {
+
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn('accounts',new TableColumn({
       name:'cpf',
@@ -10,7 +11,7 @@ export default class addCpfAccount1610062742815 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey('accounts', new TableForeignKey({
-      name:'accountcpf',
+      name:'acccountCpf',
       columnNames: ['cpf'],
       referencedColumnNames: ['cpf'],
       referencedTableName:'users',
@@ -20,7 +21,8 @@ export default class addCpfAccount1610062742815 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('accounts', 'accountcpf');
+    await queryRunner.dropForeignKey('accounts', 'acccountCpf');
     await queryRunner.dropColumn('accounts','cpf');
   }
+
 }

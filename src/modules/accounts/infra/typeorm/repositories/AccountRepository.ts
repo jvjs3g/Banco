@@ -1,10 +1,10 @@
-import { getRepository, Repository, Not } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
-import IAccountRepository from "@modules/account/repositories/IAccountRepository";
+import IAccountRepository from "@modules/accounts/repositories/IAccountsRepository";
 
 import Account from '../entities/Account';
 
-import ICreateAccountDTO from '@modules/account/dtos/ICreateAccountDTO';
+import ICreateAccountDTO from '@modules/accounts/dtos/ICreateAccountDTO';
 
 
 class AccountRepository implements IAccountRepository {
@@ -14,14 +14,11 @@ class AccountRepository implements IAccountRepository {
     this.ormRepository = getRepository(Account);
   }
 
-  public async findById(id:string):Promise<Account | undefined> {
-    const account = await this.ormRepository.findOne({
-      where: {id}
-    });
+  public async findById(id: string): Promise<Account | undefined>{
+    const account = await this.ormRepository.findOne(id);
 
     return account;
   }
-
 
   public async findByCpf(cpf:string):Promise<Account | undefined> {
     const account = await this.ormRepository.findOne({
@@ -32,15 +29,14 @@ class AccountRepository implements IAccountRepository {
   }
 
 
-
   public async create({ cpf }: ICreateAccountDTO): Promise<Account>{
-    const account = this.ormRepository.create({
+    const appointment = this.ormRepository.create({
       cpf,
     });
 
-    await this.ormRepository.save(account);
+    await this.ormRepository.save(appointment);
 
-    return account;
+    return appointment;
   }
 
   public async save(account: Account): Promise<Account>{

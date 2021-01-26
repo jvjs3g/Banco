@@ -9,10 +9,10 @@ class Account {
   cpf:string;
 
   @Column()
-  agencia:number;
+  agencia:string;
 
   @Column()
-  conta:number;
+  conta:string;
 
 
   @CreateDateColumn()

@@ -8,18 +8,14 @@ export default class AccountController {
 
       const createAccount = container.resolve(CreateAccountService);
 
-      function getRandomIntInclusive() {
-        var min = Math.ceil(1);
-        var max = Math.floor(10);
-      }
-
-      getRandomIntInclusive();
-
       const { cpf }  = request.body;
+      const numero = Math.floor(Math.random() * (1000000 - 10000 + 1)) + 10000,
+
+
       const acccount = await createAccount.execute({
         cpf,
-        agencia:1,
-        conta :Math.floor(Math.random() * (1000000 - 10000 + 1)) + 10000,
+        agencia:'1',
+        conta:numero.toString(),
       });
 
       return response.json(classToClass(acccount));

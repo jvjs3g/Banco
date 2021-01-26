@@ -18,8 +18,8 @@ export default class AccountController {
       const { cpf }  = request.body;
       const acccount = await createAccount.execute({
         cpf,
-        agencia : Math.floor(Math.random() * (10 - 1 + 1)) + 1,
-        conta : Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+        agencia:1,
+        conta :Math.floor(Math.random() * (1000000 - 10000 + 1)) + 10000,
       });
 
       return response.json(classToClass(acccount));

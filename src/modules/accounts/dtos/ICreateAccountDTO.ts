@@ -1,5 +1,5 @@
 export default interface ICreateAccountDTO {
   cpf: string;
-  agencia: string;
-  conta: string;
+  agencia: number;
+  conta: number;
 }

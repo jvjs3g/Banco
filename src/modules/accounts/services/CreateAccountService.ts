@@ -5,8 +5,8 @@ import IUserRepository from '../repositories/IAccountsRepository';
 
 interface Request{
   cpf: string;
-  agencia: string;
-  conta:string;
+  agencia: number;
+  conta: number;
 }
 
 @injectable()

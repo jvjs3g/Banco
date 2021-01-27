@@ -17,6 +17,27 @@ export default class AddagenciaecontaAccounts1611624693678 implements MigrationI
     }),
   );
 
+    await queryRunner.addColumn('accounts',new TableColumn({
+      name:'entradas',
+      type:'numeric',
+      isNullable:false,
+    }),
+  );
+
+  await queryRunner.addColumn('accounts',new TableColumn({
+    name:'saidas',
+    type:'numeric',
+    isNullable:false,
+  }),
+  );
+
+  await queryRunner.addColumn('accounts',new TableColumn({
+    name:'conta',
+    type:'varchar',
+    isNullable:false,
+  }),
+  );
+
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

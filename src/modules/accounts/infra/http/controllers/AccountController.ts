@@ -9,7 +9,7 @@ export default class AccountController {
       const createAccount = container.resolve(CreateAccountService);
 
       const { cpf }  = request.body;
-      const numero = Math.floor(Math.random() * (1000000 - 10000 + 1)) + 10000,
+      const numero = Math.floor(Math.random() * (1000000 - 10000 + 1)) + 10000;
 
 
       const acccount = await createAccount.execute({

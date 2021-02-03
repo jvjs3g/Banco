@@ -15,7 +15,7 @@ export default class AddCpfAccount1611622972029 implements MigrationInterface {
       columnNames: ['cpf'],
       referencedColumnNames: ['cpf'],
       referencedTableName:'users',
-      onDelete:'SET NULL', // o que vai acontecer com os agendamentos dessse usuario caso ele seja deletado no sistema
+      onDelete:'SET NULL', // o que vai acontecer com os agendamentos dessse usuario caso ele seja deletado no sistema/
       onUpdate:'CASCADE'// caso alguma informaçã ocomo o ID for alterado essa informação reflita nos relacionamentos
     }));
   }

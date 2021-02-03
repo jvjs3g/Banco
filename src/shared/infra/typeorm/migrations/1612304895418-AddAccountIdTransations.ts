@@ -4,15 +4,15 @@ export class AddAccountIdTransations1612304895418 implements MigrationInterface 
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn('transactions',new TableColumn({
-      name:'account',
-      type:'varchar',
+      name:'idAccount',
+      type:'uuid',
       isNullable:false,
     }),
     );
 
     await queryRunner.createForeignKey('transactions', new TableForeignKey({
-      name:'idAccount',
-      columnNames: ['account'],
+      name:'account',
+      columnNames: ['idAccount'],
       referencedColumnNames: ['id'],
       referencedTableName:'accounts',
       onDelete:'SET NULL', // o que vai acontecer com os agendamentos dessse usuario caso ele seja deletado no sistema
@@ -21,8 +21,8 @@ export class AddAccountIdTransations1612304895418 implements MigrationInterface 
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('transactions', 'idAccount');
-    await queryRunner.dropColumn('transactions','acccount');
+    await queryRunner.dropForeignKey('transactions', 'account');
+    await queryRunner.dropColumn('transactions','idAccount');
   }
 
 }

@@ -6,7 +6,7 @@ export class AddAccountIdTransations1612304895418 implements MigrationInterface 
     await queryRunner.addColumn('transactions',new TableColumn({
       name:'idAccount',
       type:'uuid',
-      isNullable:false,
+      isNullable:true,
     }),
     );
 

@@ -8,10 +8,11 @@ export default class TransactionController {
 
       const createTransaction = container.resolve(CreateTransactionService);
 
-      const { title, value , type }  = request.body;
+      const { idAccount,  title, value , type }  = request.body;
 
 
       const transaction = await createTransaction.execute({
+        idAccount,
         type,
         title,
         value,

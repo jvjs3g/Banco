@@ -12,6 +12,7 @@ const transactionController = new TransactionsController();
 
 transactionsRouter.post('/',celebrate({
   [Segments.BODY]:{
+    idAccount: Joi.string().required(),
     title: Joi.string().required(),
     type: Joi.string().required(),
     value: Joi.number().required(),

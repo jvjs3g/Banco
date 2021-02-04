@@ -21,8 +21,9 @@ class TransactionRepository implements ITransactionRepository {
   }
 
 
-  public async create({ title, type, value  }: ICreateTransactionDTO): Promise<Transaction>{
+  public async create({ idAccount, title, type, value  }: ICreateTransactionDTO): Promise<Transaction>{
     const appointment = this.ormRepository.create({
+      idAccount,
       title,
       type,
       value

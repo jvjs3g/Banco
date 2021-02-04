@@ -12,12 +12,10 @@ id: string;
 title: string;
 
 @Column()
-type: 'income' | 'outcome';
+type: string;
 
 @Column()
 value: number;
-
-
 
 @CreateDateColumn()
 created_at: Date;

@@ -3,6 +3,9 @@ import { container } from 'tsyringe';
 import '@modules/users/providers';
 import './providers';
 
+import ITransactionRepository from '@modules/transactions/repositories/ITransactionsRepository';
+import TransactionRepository from '@modules/transactions/infra/typeorm/repositories/TransactionRepository';
+
 import IAccountsRepository from '@modules/accounts/repositories/IAccountsRepository';
 import AccountRepository from '@modules/accounts/infra/typeorm/repositories/AccountRepository';
 
@@ -17,3 +20,4 @@ import UserTokenRepository from '@modules/users/infra/typeorm/repositories/UserT
 container.registerSingleton<IAccountsRepository>('AccountsRepository', AccountRepository);
 container.registerSingleton<IUserRepository>('UsersRepository', UsersRepository);
 container.registerSingleton<IUserTokenRepository>('UserTokensRepository',UserTokenRepository);
+container.registerSingleton<ITransactionRepository>('TransactionRepository', TransactionRepository);

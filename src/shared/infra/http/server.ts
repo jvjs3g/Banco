@@ -25,6 +25,7 @@ app.use(routes);
 
 app.use(errors());
 
+/*
 app.use(
   (error: Error, request: Request, response: Response, _: NextFunction) => {
     if (error instanceof AppError) {
@@ -40,6 +41,8 @@ app.use(
     });
   },
 );
+
+*/
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

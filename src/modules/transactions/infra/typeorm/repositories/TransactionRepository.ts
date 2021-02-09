@@ -7,6 +7,13 @@ import Transaction from '../entities/Transaction';
 import ICreateTransactionDTO from '@modules/transactions/dtos/ICreateTransactionDTO';
 
 
+interface Balance {
+  transaction:Transaction[];
+  entrada: number;
+  saida: number;
+  total: number;
+}
+
 class TransactionRepository implements ITransactionRepository {
   private ormRepository: Repository<Transaction>;
 
@@ -20,6 +27,30 @@ class TransactionRepository implements ITransactionRepository {
     return transaction;
   }
 
+
+  public async list(idAccount: string):Promise<Balance>{
+
+    const transaction = await this.ormRepository.find({
+      where:{ idAccount }
+    });
+
+    const entrada  = await this.getValue('Entrada');
+    const saida = await this.getValue('Saida');
+
+    const total = entrada - saida;
+
+
+    return { transaction, entrada, saida, total };
+  }
+
+  private async getValue(type: string): Promise<number> {
+    const { result } = await this.ormRepository.createQueryBuilder("transaction")
+        .select('SUM(transaction.value)', 'result')
+        .where('type = :type', { type })
+        .getRawOne();
+
+    return Number(result);
+  }
 
   public async create({ idAccount, title, type, value  }: ICreateTransactionDTO): Promise<Transaction>{
     const appointment = this.ormRepository.create({

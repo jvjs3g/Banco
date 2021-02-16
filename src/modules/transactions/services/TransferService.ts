@@ -5,7 +5,6 @@ import Transaction from '@modules/transactions/infra/typeorm/entities/Transactio
 import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 
 interface Request{
-  idAccount: string;
   agencia:string;
   conta: string;
   title: string;
@@ -23,7 +22,7 @@ class CreateTransactionService{
     ){
 
   }
-  public async execute({ idAccount,  agencia, conta, title, type, value}:Request):Promise<Transaction>{
+  public async execute({ agencia, conta, title, type, value}:Request):Promise<Transaction>{
 
 
 
@@ -40,8 +39,10 @@ class CreateTransactionService{
     }
 
 
+
+
     const transaction = await this.transactionsRepository.create({
-       idAccount,
+       idAccount: ag?.id.toString(),
        title,
        type,
        value

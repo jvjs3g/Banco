@@ -6,6 +6,7 @@ import password from '@modules/users/infra/http/routes/password.routes';
 import profileRouter from '@modules/users/infra/http/routes/Profile.routes';
 import transaction from '@modules/transactions/infra/http/routes/transactions.routes';
 import listTransaction from '@modules/transactions/infra/http/routes/listTransaction.routes';
+import transfer from '@modules/transactions/infra/http/routes/transfer.routes';
 
 const routes = Router();
 
@@ -16,6 +17,7 @@ routes.use('/password', password);
 routes.use('/profile',profileRouter);
 routes.use('/transaction', transaction);
 routes.use('/listTransaction',listTransaction);
+routes.use('/transfer',transfer);
 
 export default routes;
 //

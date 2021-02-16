@@ -28,6 +28,23 @@ class AccountRepository implements IAccountRepository {
     return account;
   }
 
+  public async findByAgencia(agencia:string):Promise<Account | undefined> {
+    const account = await this.ormRepository.findOne({
+      where: { agencia }
+    });
+
+    return account;
+  }
+
+   public async findByConta(conta:string):Promise<Account | undefined> {
+    const account = await this.ormRepository.findOne({
+      where: { conta }
+    });
+
+    return account;
+  }
+
+
 
   public async create({ cpf, agencia, conta }: ICreateAccountDTO): Promise<Account>{
     const appointment = this.ormRepository.create({
